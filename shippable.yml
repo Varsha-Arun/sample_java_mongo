@@ -10,5 +10,5 @@ script:
    - ant clean
    - ant coverage
 notifications:
-  email: false
-
+  email: 
+   varsha@shippable.com
