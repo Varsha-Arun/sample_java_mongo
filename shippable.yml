@@ -4,11 +4,28 @@ jdk:
    - oraclejdk7
    - openjdk6
    - openjdk7
+   - openjdk8
+   
 services:
    - mongodb
+   
+env:
+   - FOO="test"
+   - TEST="LOL"
+   
+matrix:
+   include:
+      - jdk: "openjdk6"
+      - secure: Ewumn36GcxmISmQDzSuVe4pTC2mFLgZOZ02UlCjUDCSfUq7MmJ+K8ELr0/DO1S9qVE2XrGmZCMBzWPuEbF8gu5LY6is3qvHsOScNp/v/n2fM3AzAwhuzeuU2XzD+1sqgIuORZvpxggbxe701JjAx4zJ1bk3xHEhHKgBSho/82fwkM+bMkvEXFCbridciU4qa2LiHZYynD4dDJkhNPH/h75BO6J7XYRhLJ4SmUFgr9igO8j2IOPvNGVy4/gsw0kBu2Oxi3Kr6ULDfm96sU6BXT2gnzHiBAs2fT7PRwRB+inArnQ4/KuGANvPHaZ8pujaHRXRT5ROR9hsvz9IEG7b81g==
+   exclude:
+      - jdk: "openjdk7"
+   allow_success:
+      - jdk: "openjdk8"
+   
 script:
    - ant clean
    - ant coverage
+   
 notifications:
   email: 
    varsha@shippable.com
