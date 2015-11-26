@@ -4,23 +4,23 @@ jdk:
    - oraclejdk7
    - openjdk6
    - openjdk7
-   #- openjdk8
    
 services:
    - mongodb
    
 env:
-   - FOO="test"
-   - TEST="LOL"
-   
+ - Foo=bar
+ - Bar=foo
+ 
 matrix:
-   include:
-      - jdk: "openjdk6"
-        env: yes=why
-   exclude:
-      - jdk: "openjdk7"
-   allow_success:
-      - jdk: "openjdk8"
+  allow_failures:
+    - jdk: "oraclejdk7"
+      env: ship=dock
+  exclude:
+    - jdk: "openjdk7"
+  include:
+    - jdk: "openjdk6"
+      env: yes=why
    
 script:
    - ant clean
